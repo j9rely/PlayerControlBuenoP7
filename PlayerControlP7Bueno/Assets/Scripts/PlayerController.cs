@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
+    public Camera mainCamera;
+    public Camera hoodCamera;
+    public KeyCode switchKey;
     void Start()
     {
         
@@ -19,6 +22,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        //Axis setup
+        if (Input.GetKeyDown(switchKey))
+        {
+            mainCamera.enabled = !mainCamera.enabled;
+            hoodCamera.enabled = !hoodCamera.enabled;
+        }
         horizontalInput = Input.GetAxis("Horizontal");
         forwardInput = Input.GetAxis("Vertical");
         //Moves the car forward based on the vertical input
